@@ -26,7 +26,7 @@ set(LUA_SRC_FILES
 # -------------------------------------------------------------------------------------------------
 add_library(lua SHARED ${LUA_SRC_FILES})
 target_include_directories(lua
-        PRIVATE ${LUA_ROOT_DIR}/src)
+        PUBLIC ${LUA_ROOT_DIR}/src)
 
 set_target_properties(lua PROPERTIES
 		OUTPUT_NAME lua
