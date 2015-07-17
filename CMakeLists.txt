@@ -25,11 +25,14 @@ set(LUA_SRC_FILES
 # -------------------------------------------------------------------------------------------------
 add_library(lua SHARED ${LUA_SRC_FILES})
 target_include_directories(lua
-        PUBLIC ${LUA_ROOT_DIR}/src)
-
+       PUBLIC ${LUA_ROOT_DIR}/src)
+if(WIN32)
+	target_compile_definitions(lua
+		PUBLIC LUA_BUILD_AS_DLL)
+endif()
 set_target_properties(lua PROPERTIES
-		OUTPUT_NAME lua
-		DEBUG_POSTFIX _d
-		RELWITHDEBINFO_POSTFIX _rd
-		MINSIZEREL_POSTFIX _rm)
+	OUTPUT_NAME lua
+	DEBUG_POSTFIX _d
+	RELWITHDEBINFO_POSTFIX _rd
+	MINSIZEREL_POSTFIX _rm)
 		
